@@ -23,8 +23,7 @@ public class Board {
 		}
 	}
 
-	// For debugging purposes
-	public boolean isInitialized() {
+	public boolean isDraw() {
 		for(int i = 0; i < row; i++) {
 			for(int j = 0; j < col; j++) {
 				if(tttBoard[i][j].getMark() != Seed.EMPTY) {
@@ -33,5 +32,27 @@ public class Board {
 			}
 		}
 		return true;
+	}
+
+	public boolean hasWon(Seed candidate) {
+		return ((tttBoard[lastRow][0].getMark() == candidate 
+			&& tttBoard[lastRow][1].getMark() == candidate 
+			&& tttBoard[lastRow][2].getMark() == candidate) 
+			|| (tttBoard[0][lastCol].getMark() == candidate 
+			&& tttBoard[1][lastCol].getMark() == candidate
+			&& tttBoard[2][lastCol].getMark() == candidate) 
+			|| (lastRow == lastCol
+			&& tttBoard[0][0].getMark() == candidate
+			&& tttBoard[1][1].getMark() == candidate
+			&& tttBoard[2][2].getMark() == candidate)
+			|| (lastRow + lastCol == 2
+			&& tttBoard[0][2].getMark() == candidate
+			&& tttBoard[1][1].getMark() == candidate
+			&& tttBoard[2][0].getMark() == candidate));
+	}
+
+	// Mainly for testing hasWon()
+	public void setNewCell(int row, int col, Seed newMark) {
+		tttBoard[row][col].setMark(newMark);
 	}
 }
