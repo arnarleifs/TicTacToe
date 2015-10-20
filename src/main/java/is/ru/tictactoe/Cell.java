@@ -19,4 +19,12 @@ public class Cell {
 	public boolean isEmpty() {
 		return this.mark == Seed.EMPTY;
 	}
+
+	public void setMark(Seed newMark) {
+		this.mark = newMark;
+	}
+
+	public boolean checkMark(Seed mark) {
+		return this.mark == mark;
+	}
 }

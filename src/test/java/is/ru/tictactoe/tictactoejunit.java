@@ -12,4 +12,12 @@ public class tictactoejunit {
 		assertEquals(true, returnValue);
 		System.out.println("testSetEmptyForCell passed!");
 	}
+
+	@Test
+	public void testMarkForCell() {
+		cell.setMark(Seed.CIRCLE);
+		boolean returnValue = cell.checkMark(Seed.CIRCLE);
+		assertEquals(true, returnValue);
+		System.out.println("testMarkForCell passed!");
+	}
 }
