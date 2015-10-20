@@ -54,5 +54,7 @@ public class Board {
 	// Mainly for testing hasWon()
 	public void setNewCell(int row, int col, Seed newMark) {
 		tttBoard[row][col].setMark(newMark);
+		lastRow = row;
+		lastCol = col;
 	}
 }
