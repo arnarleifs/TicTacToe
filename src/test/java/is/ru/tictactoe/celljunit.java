@@ -2,7 +2,7 @@ package is.ru.tictactoe;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
-public class tictactoejunit {
+public class celljunit {
 	private Cell cell = new Cell(0,0, Seed.CROSS);
 
 	@Test
