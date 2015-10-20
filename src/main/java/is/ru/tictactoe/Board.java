@@ -56,13 +56,11 @@ public class Board {
 			&& tttBoard[0][0].getMark() == candidate
 			&& tttBoard[1][1].getMark() == candidate
 			&& tttBoard[2][2].getMark() == candidate)
-			|| (lastRow + lastCol == 2
-			&& tttBoard[0][2].getMark() == candidate
+			|| (tttBoard[0][2].getMark() == candidate
 			&& tttBoard[1][1].getMark() == candidate
 			&& tttBoard[2][0].getMark() == candidate));
 	}
 
-	// Mainly for testing hasWon()
 	public void setNewCell(int row, int col, Seed newMark) {
 		tttBoard[row][col].setMark(newMark);
 		lastRow = row;
