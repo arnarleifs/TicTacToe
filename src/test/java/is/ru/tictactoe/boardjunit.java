@@ -6,7 +6,7 @@ public class boardjunit {
 	@Test
 	public void testInitializeBoard() {
 		Board testBoard = new Board();
-		boolean returnValue = testBoard.isDraw();
+		boolean returnValue = testBoard.isInitialized();
 		assertEquals(true, returnValue);
 		System.out.println("testInitializeBoard passed!");
 	}
@@ -88,6 +88,23 @@ public class boardjunit {
 		board.setNewCell(1,1,Seed.CIRCLE);
 		board.setNewCell(2,0,Seed.CIRCLE);
 		boolean returnValue = board.hasWon(Seed.CIRCLE);
+		assertEquals(true, returnValue);
+	}
+
+	@Test
+	public void testIsDraw() {
+		Board board = new Board();
+		board.setNewCell(0,0,Seed.CIRCLE);
+		board.setNewCell(0,1,Seed.CIRCLE);
+		board.setNewCell(0,2,Seed.CROSS);
+		board.setNewCell(1,0,Seed.CROSS);
+		board.setNewCell(1,1,Seed.CROSS);
+		board.setNewCell(1,2,Seed.CIRCLE);
+		board.setNewCell(2,0,Seed.CIRCLE);
+		board.setNewCell(2,1,Seed.CROSS);
+		board.setNewCell(2,2,Seed.CIRCLE);
+
+		boolean returnValue = board.isDraw();
 		assertEquals(true, returnValue);
 	}
 }

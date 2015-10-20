@@ -15,6 +15,17 @@ public class Board {
 		gameStatus = Status.ONGOING;
 	}
 
+	public boolean isDraw() {
+		for(int i = 0; i < row; i++) {
+			for(int j = 0; j < col; j++) {
+				if(tttBoard[i][j].getMark() == Seed.EMPTY) {
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+
 	private void initializeBoard() {
 		for(int i = 0; i < row; i++) {
 			for(int j = 0; j < col; j++) {
@@ -23,7 +34,7 @@ public class Board {
 		}
 	}
 
-	public boolean isDraw() {
+	public boolean isInitialized() {
 		for(int i = 0; i < row; i++) {
 			for(int j = 0; j < col; j++) {
 				if(tttBoard[i][j].getMark() != Seed.EMPTY) {
