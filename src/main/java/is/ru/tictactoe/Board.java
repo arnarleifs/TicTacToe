@@ -52,8 +52,7 @@ public class Board {
 			|| (tttBoard[0][lastCol].getMark() == candidate 
 			&& tttBoard[1][lastCol].getMark() == candidate
 			&& tttBoard[2][lastCol].getMark() == candidate) 
-			|| (lastRow == lastCol
-			&& tttBoard[0][0].getMark() == candidate
+			|| (tttBoard[0][0].getMark() == candidate
 			&& tttBoard[1][1].getMark() == candidate
 			&& tttBoard[2][2].getMark() == candidate)
 			|| (tttBoard[0][2].getMark() == candidate
