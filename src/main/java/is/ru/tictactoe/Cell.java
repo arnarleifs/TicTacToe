@@ -27,4 +27,8 @@ public class Cell {
 	public boolean checkMark(Seed mark) {
 		return this.mark == mark;
 	}
+
+	public Seed getMark() {
+		return this.mark;
+	}
 }
