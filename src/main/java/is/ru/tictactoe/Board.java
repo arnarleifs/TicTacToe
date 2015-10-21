@@ -46,18 +46,32 @@ public class Board {
 	}
 
 	public boolean hasWon(Seed candidate) {
-		return ((tttBoard[lastRow][0].getMark() == candidate 
+		return hasWonOnRowLevel(candidate) || hasWonOnColumnLevel(candidate) || hasWonOnDiagonal(candidate)
+			   || hasWonOnOppositeDiagonal(candidate);
+	}
+
+	private boolean hasWonOnRowLevel(Seed candidate) {
+		return (tttBoard[lastRow][0].getMark() == candidate 
 			&& tttBoard[lastRow][1].getMark() == candidate 
-			&& tttBoard[lastRow][2].getMark() == candidate) 
-			|| (tttBoard[0][lastCol].getMark() == candidate 
+			&& tttBoard[lastRow][2].getMark() == candidate);
+	}
+
+	private boolean hasWonOnColumnLevel(Seed candidate) {
+		return (tttBoard[0][lastCol].getMark() == candidate 
 			&& tttBoard[1][lastCol].getMark() == candidate
-			&& tttBoard[2][lastCol].getMark() == candidate) 
-			|| (tttBoard[0][0].getMark() == candidate
+			&& tttBoard[2][lastCol].getMark() == candidate);
+	}
+
+	private boolean hasWonOnDiagonal(Seed candidate) {
+		return (tttBoard[0][0].getMark() == candidate
 			&& tttBoard[1][1].getMark() == candidate
-			&& tttBoard[2][2].getMark() == candidate)
-			|| (tttBoard[0][2].getMark() == candidate
+			&& tttBoard[2][2].getMark() == candidate);
+	}
+
+	private boolean hasWonOnOppositeDiagonal(Seed candidate) {
+		return (tttBoard[0][2].getMark() == candidate
 			&& tttBoard[1][1].getMark() == candidate
-			&& tttBoard[2][0].getMark() == candidate));
+			&& tttBoard[2][0].getMark() == candidate);
 	}
 
 	public void setNewCell(int row, int col, Seed newMark) {
