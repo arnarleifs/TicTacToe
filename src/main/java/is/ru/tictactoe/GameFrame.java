@@ -20,12 +20,15 @@ public class GameFrame extends JFrame {
         "TicTacToe!"));
 		panel.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) { 
+			public void mouseClicked(MouseEvent e) {
 				// Check if clicked in a valid cell
-
+				if(BoardIndex.checkIndex(e.getX(), e.getY())) {
+					BoardIndex idx = new BoardIndex(e.getX(), e.getY());
+				}
 				System.out.println("X: " + e.getX());
 				System.out.println("Y: " + e.getY());
 				System.out.println("---------------");
+				// Repaints the panel again with the changes done.
 				repaint();
 			}
 		});
@@ -42,11 +45,13 @@ public class GameFrame extends JFrame {
 	} 
 
 	public class GamePanel extends JPanel {
-		private int x = -50;
-		private int y = -50;
+		private int x = 0;
+		private int y = 0;
 		@Override
 		public void paintComponent(Graphics g) {
 			Graphics2D g2d = (Graphics2D) g;
+			// Check the board to see which are noted and draw it considering which Seed it holds
+			g2d.drawRect(x++, y++, 20, 20);
 		}
 	}
 

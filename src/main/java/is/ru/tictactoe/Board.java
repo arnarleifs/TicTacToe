@@ -6,8 +6,8 @@ public class Board {
 
 	private Status gameStatus;
 	private Cell[][] tttBoard;
-	private int lastRow;
-	private int lastCol;
+	private int lastModifiedRow;
+	private int lastModifiedCol;
 
 	public Board() {
 		tttBoard = new Cell[row][col];
@@ -51,15 +51,15 @@ public class Board {
 	}
 
 	private boolean hasWonOnRowLevel(Seed candidate) {
-		return (tttBoard[lastRow][0].getMark() == candidate 
-			&& tttBoard[lastRow][1].getMark() == candidate 
-			&& tttBoard[lastRow][2].getMark() == candidate);
+		return (tttBoard[lastModifiedRow][0].getMark() == candidate 
+			&& tttBoard[lastModifiedRow][1].getMark() == candidate 
+			&& tttBoard[lastModifiedRow][2].getMark() == candidate);
 	}
 
 	private boolean hasWonOnColumnLevel(Seed candidate) {
-		return (tttBoard[0][lastCol].getMark() == candidate 
-			&& tttBoard[1][lastCol].getMark() == candidate
-			&& tttBoard[2][lastCol].getMark() == candidate);
+		return (tttBoard[0][lastModifiedCol].getMark() == candidate 
+			&& tttBoard[1][lastModifiedCol].getMark() == candidate
+			&& tttBoard[2][lastModifiedCol].getMark() == candidate);
 	}
 
 	private boolean hasWonOnDiagonal(Seed candidate) {
@@ -76,7 +76,7 @@ public class Board {
 
 	public void setNewCell(int row, int col, Seed newMark) {
 		tttBoard[row][col].setMark(newMark);
-		lastRow = row;
-		lastCol = col;
+		lastModifiedRow = row;
+		lastModifiedCol = col;
 	}
 }
