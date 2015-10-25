@@ -28,3 +28,9 @@ dependencies {
     // 'test.useTestNG()' to your build script.
     testCompile 'junit:junit:4.12'
 }
+
+tasks.create(name: 'sendFeedback', type: Exec) {
+    // Python feedback script
+    workingDir 'bin'
+    commandLine 'python', 'hmm.py'
+}

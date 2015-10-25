@@ -7,7 +7,7 @@ public class boardjunit {
 	public void testInitializeBoard() {
 		Board testBoard = new Board();
 		boolean returnValue = testBoard.isInitialized();
-		assertEquals(true, returnValue);
+		assertEquals(false, returnValue);
 		System.out.println("testInitializeBoard passed!");
 	}
 
