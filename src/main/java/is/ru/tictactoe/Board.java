@@ -8,11 +8,13 @@ public class Board {
 	private Cell[][] tttBoard;
 	private int lastModifiedRow;
 	private int lastModifiedCol;
+	private Seed turn;
 
 	public Board() {
 		tttBoard = new Cell[row][col];
 		initializeBoard();
 		gameStatus = Status.ONGOING;
+		turn = Seed.CROSS;
 	}
 
 	public boolean isDraw() {
@@ -74,9 +76,26 @@ public class Board {
 			&& tttBoard[2][0].getMark() == candidate);
 	}
 
-	public void setNewCell(int row, int col, Seed newMark) {
-		tttBoard[row][col].setMark(newMark);
-		lastModifiedRow = row;
-		lastModifiedCol = col;
+	public void setNewCell(int r, int c, Seed newMark) {
+		tttBoard[r][c].setMark(newMark);
+		lastModifiedRow = r;
+		lastModifiedCol = c;
+		if(turn == Seed.CROSS) {
+			turn = Seed.CIRCLE;
+		} else {
+			turn = Seed.CROSS;
+		}
+	}
+
+	public Seed whichTurn() {
+		return this.turn;
+	}
+
+	public boolean isEmpty(int r, int c) {
+		return tttBoard[r][c].getMark() == Seed.EMPTY;
+	}
+
+	public Seed getSeedFromPosition(int r, int c) {
+		return tttBoard[r][c].getMark();
 	}
 }
