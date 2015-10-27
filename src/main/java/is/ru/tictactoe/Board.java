@@ -6,13 +6,15 @@ public class Board {
 
     private Status gameStatus;
     private Cell[][] tttBoard;
-    private int lastRow;
-    private int lastCol;
+    private int lastModifiedRow;
+    private int lastModifiedCol;
+    private Seed turn;
 
     public Board() {
         tttBoard = new Cell[row][col];
         initializeBoard();
         gameStatus = Status.ONGOING;
+        turn = Seed.CROSS;
     }
 
     public boolean isDraw() {
@@ -23,6 +25,7 @@ public class Board {
                 }
             }
         }
+        gameStatus = Status.DRAW;
         return true;
     }
 
@@ -46,24 +49,66 @@ public class Board {
     }
 
     public boolean hasWon(Seed candidate) {
-        return ((tttBoard[lastRow][0].getMark() == candidate 
-            && tttBoard[lastRow][1].getMark() == candidate 
-            && tttBoard[lastRow][2].getMark() == candidate) 
-            || (tttBoard[0][lastCol].getMark() == candidate 
-            && tttBoard[1][lastCol].getMark() == candidate
-            && tttBoard[2][lastCol].getMark() == candidate) 
-            || (tttBoard[0][0].getMark() == candidate
-            && tttBoard[1][1].getMark() == candidate
-            && tttBoard[2][2].getMark() == candidate)
-            || (tttBoard[0][2].getMark() == candidate
-            && tttBoard[1][1].getMark() == candidate
-            && tttBoard[2][0].getMark() == candidate));
+        boolean won = hasWonOnRowLevel(candidate) || hasWonOnColumnLevel(candidate)
+                      || hasWonOnDiagonal(candidate) || hasWonOnOppositeDiagonal(candidate);
+        if(won) {
+            if (candidate == Seed.CROSS) {
+                gameStatus = Status.CROSS_WON;
+            } else {
+                gameStatus = Status.CIRCLE_WON;
+            } 
+        }
+        return won;
     }
 
-    public void setNewCell(int row, int col, Seed newMark) {
-        tttBoard[row][col].setMark(newMark);
-        lastRow = row;
-        lastCol = col;
+    public Status getGameStatus() {
+        return gameStatus;
+    }
+
+    private boolean hasWonOnRowLevel(Seed candidate) {
+        return (tttBoard[lastModifiedRow][0].getMark() == candidate 
+            && tttBoard[lastModifiedRow][1].getMark() == candidate 
+            && tttBoard[lastModifiedRow][2].getMark() == candidate);
+    }
+
+    private boolean hasWonOnColumnLevel(Seed candidate) {
+        return (tttBoard[0][lastModifiedCol].getMark() == candidate 
+            && tttBoard[1][lastModifiedCol].getMark() == candidate
+            && tttBoard[2][lastModifiedCol].getMark() == candidate);
+    }
+
+    private boolean hasWonOnDiagonal(Seed candidate) {
+        return (tttBoard[0][0].getMark() == candidate
+            && tttBoard[1][1].getMark() == candidate
+            && tttBoard[2][2].getMark() == candidate);
+    }
+
+    private boolean hasWonOnOppositeDiagonal(Seed candidate) {
+        return (tttBoard[0][2].getMark() == candidate
+            && tttBoard[1][1].getMark() == candidate
+            && tttBoard[2][0].getMark() == candidate);
+    }
+
+    public void setNewCell(int r, int c, Seed newMark) {
+        tttBoard[r][c].setMark(newMark);
+        lastModifiedRow = r;
+        lastModifiedCol = c;
+        if(turn == Seed.CROSS) {
+            turn = Seed.CIRCLE;
+        } else {
+            turn = Seed.CROSS;
+        }
+    }
+
+    public Seed whichTurn() {
+        return this.turn;
+    }
+
+    public boolean isEmpty(int r, int c) {
+        return tttBoard[r][c].getMark() == Seed.EMPTY;
+    }
+
+    public Seed getSeedFromPosition(int r, int c) {
+        return tttBoard[r][c].getMark();
     }
 }
-
