@@ -108,4 +108,3 @@ public class boardjunit {
         assertEquals(true, returnValue);
     }
 }
-
