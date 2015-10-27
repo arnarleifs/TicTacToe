@@ -11,20 +11,17 @@ public class GameFrame extends JFrame {
     // Constants for determining the size of the frame and components
     private final String TITLE = "Tic 'n toe!";
     private GamePanel panel = new GamePanel();
-    BorderPanel border = new BorderPanel();
+    private BorderPanel border = new BorderPanel();
     private Board board = new Board();
+    private Container pane;
 
     private void initializeFrame() {
-        Container pane = this.getContentPane();
+        pane = this.getContentPane();
         pane.setLayout(new BorderLayout());
         JLabel label = new JLabel("Tic tac toe!", JLabel.CENTER);
         label.setFont(new Font("Courier", Font.BOLD, 36));
         label.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
         pane.add(label, BorderLayout.NORTH);
-        label = new JLabel("X won!", JLabel.CENTER);
-        label.setFont(new Font("Courier", Font.BOLD, 36));
-        label.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
-        pane.add(label, BorderLayout.SOUTH);
     }
 
     private void drawSeed(BoardIndex idx, Seed mark) {
@@ -37,13 +34,21 @@ public class GameFrame extends JFrame {
         initializeFrame();
         JButton button = new JButton("New game");
         button.setBounds(300, 500, 100, 50);
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Initialize board
+                board = new Board();
+                repaint();
+            }
+        });
         panel.add(button);
         border.setBorder(new LineBorder(Color.black, 2));
         border.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 // Check if clicked in a valid cell
-                if (BoardIndex.checkIndex(e.getX(), e.getY())) {
+                if (BoardIndex.checkIndex(e.getX(), e.getY()) && board.getGameStatus() == Status.ONGOING) {
                     BoardIndex idx = new BoardIndex(e.getX(), e.getY());
                     Seed turn = board.whichTurn();
                     if (turn == Seed.CROSS) {
@@ -52,9 +57,23 @@ public class GameFrame extends JFrame {
                         drawSeed(idx, turn);
                     }
                     // Check if game is finished
+                    if (board.hasWon(Seed.CROSS)) {
+                        JLabel label = new JLabel("X won!", JLabel.CENTER);
+                        label.setFont(new Font("Courier", Font.BOLD, 36));
+                        label.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
+                        panel.add(label, BorderLayout.SOUTH); 
+                    } else if (board.hasWon(Seed.CIRCLE)) {
+                        JLabel label = new JLabel("Circle won!", JLabel.CENTER);
+                        label.setFont(new Font("Courier", Font.BOLD, 36));
+                        label.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
+                        pane.add(label, BorderLayout.SOUTH); 
+                    } else if (board.isDraw()) {
+                        JLabel label = new JLabel("Draw :(", JLabel.CENTER);
+                        label.setFont(new Font("Courier", Font.BOLD, 36));
+                        label.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
+                        pane.add(label, BorderLayout.SOUTH);
+                    }
                     repaint();
-                } else {
-                    // nothing happens
                 }
             }
         });
@@ -110,6 +129,7 @@ public class GameFrame extends JFrame {
                 x1 = 0;
                 x2 = 100;
             }
+
         }
 
         @Override

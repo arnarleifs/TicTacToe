@@ -25,6 +25,7 @@ public class Board {
 				}
 			}
 		}
+		gameStatus = Status.DRAW;
 		return true;
 	}
 
@@ -48,8 +49,20 @@ public class Board {
 	}
 
 	public boolean hasWon(Seed candidate) {
-		return hasWonOnRowLevel(candidate) || hasWonOnColumnLevel(candidate) || hasWonOnDiagonal(candidate)
+		boolean won = hasWonOnRowLevel(candidate) || hasWonOnColumnLevel(candidate) || hasWonOnDiagonal(candidate)
 			   || hasWonOnOppositeDiagonal(candidate);
+    	if(won) {
+    		if (candidate == Seed.CROSS) {
+    			gameStatus = Status.CROSS_WON;
+    		} else {
+    			gameStatus = Status.CIRCLE_WON;
+    		} 
+    	}
+    	return won;
+	}
+
+	public Status getGameStatus() {
+		return gameStatus;
 	}
 
 	private boolean hasWonOnRowLevel(Seed candidate) {
