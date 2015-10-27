@@ -36,10 +36,10 @@ public class GameFrame extends JFrame {
         }
     }
 
-    public GameFrame() {
-        initializeFrame();
+    private void addNewGameButtonToBoard() {
         JButton button = new JButton("New game");
         button.setBounds(300, 500, 100, 50);
+        // Change the default behaviour when clicking the button
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -50,7 +50,27 @@ public class GameFrame extends JFrame {
             }
         });
         panel.add(button);
-        border.setBorder(new LineBorder(Color.black, 2));
+    }
+
+    private void checkGameStatus() {
+        if (board.hasWon(Seed.CROSS)) {
+            changeLabel("Cross won!");
+        } else if (board.hasWon(Seed.CIRCLE)) {
+            changeLabel("Circle won!");
+        } else if (board.isDraw()) {
+            changeLabel("Draw :(");
+        }
+    }
+
+    private void makePlay(Seed player, BoardIndex idx) {
+        if (player == Seed.CROSS) {
+            drawSeed(idx, player);
+        } else if (player == Seed.CIRCLE) {
+            drawSeed(idx, player);
+        }
+    }
+
+    private void receiveMouseInputFromUser() {
         border.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -58,23 +78,20 @@ public class GameFrame extends JFrame {
                 if (BoardIndex.checkIndex(e.getX(), e.getY()) && board.getGameStatus() == Status.ONGOING) {
                     BoardIndex idx = new BoardIndex(e.getX(), e.getY());
                     Seed turn = board.whichTurn();
-                    if (turn == Seed.CROSS) {
-                        drawSeed(idx, turn);
-                    } else if (turn == Seed.CIRCLE) {
-                        drawSeed(idx, turn);
-                    }
+                    makePlay(turn, idx);
                     // Check if game is finished
-                    if (board.hasWon(Seed.CROSS)) {
-                        changeLabel("Cross won!");
-                    } else if (board.hasWon(Seed.CIRCLE)) {
-                        changeLabel("Circle won!");
-                    } else if (board.isDraw()) {
-                        changeLabel("Draw :(");
-                    }
+                    checkGameStatus();
                     repaint();
                 }
             }
         });
+    }
+
+    public GameFrame() {
+        initializeFrame();
+        addNewGameButtonToBoard();
+        border.setBorder(new LineBorder(Color.black, 2));
+        receiveMouseInputFromUser();
         panel.add(border, BorderLayout.CENTER);
         this.add(panel);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -104,6 +121,20 @@ public class GameFrame extends JFrame {
             g2d.drawLine(0, 100, 300, 100);
             g2d.drawLine(0, 200, 300, 200);
         }
+
+        private void drawCross(int x1, int x2, int y1, int y2, Graphics2D g2d) {
+            g2d.setColor(Color.RED);
+            g2d.setStroke(new BasicStroke(3));
+            g2d.drawLine(x1, y1, x2, y2);
+            g2d.drawLine(x2, y1, x1, y2);
+        }
+
+        private void drawCircle(int x1, int y1, Graphics2D g2d) {
+            g2d.setColor(Color.GREEN);
+            g2d.setStroke(new BasicStroke(3));
+            g2d.drawOval(x1, y1, 100, 100);
+        }
+
         @Override
         public void paintComponent(Graphics g) {
             Graphics2D g2d = (Graphics2D) g;
@@ -114,14 +145,9 @@ public class GameFrame extends JFrame {
             for (int i = 0; i < 3; i++) {
                 for (int j = 0; j < 3; j++) {
                     if (board.getSeedFromPosition(i, j) == Seed.CROSS) {
-                        g2d.setColor(Color.RED);
-                        g2d.setStroke(new BasicStroke(3));
-                        g2d.drawLine(x1, y1, x2, y2);
-                        g2d.drawLine(x2, y1, x1, y2);
+                        drawCross(x1, x2, y1, y2, g2d);
                     } else if (board.getSeedFromPosition(i, j) == Seed.CIRCLE) {
-                        g2d.setColor(Color.GREEN);
-                        g2d.setStroke(new BasicStroke(3));
-                        g2d.drawOval(x1, y1, 100, 100);
+                        drawCircle(x1, y1, g2d);
                     }
                     x1 = x2;
                     x2 += 100;
