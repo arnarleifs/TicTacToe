@@ -94,10 +94,13 @@ public class GameFrame extends JFrame {
                 for (int j = 0; j < 3; j++) {
                     if (board.getSeedFromPosition(i, j) == Seed.CROSS) {
                         g2d.setColor(Color.RED);
+                        g2d.setStroke(new BasicStroke(3));
                         g2d.drawLine(x1, y1, x2, y2);
                         g2d.drawLine(x2, y1, x1, y2);
                     } else if (board.getSeedFromPosition(i, j) == Seed.CIRCLE) {
                         g2d.setColor(Color.GREEN);
+                        g2d.setStroke(new BasicStroke(3));
+                        g2d.drawOval(x1, y1, 100, 100);
                     }
                     x1 = x2;
                     x2 += 100;
