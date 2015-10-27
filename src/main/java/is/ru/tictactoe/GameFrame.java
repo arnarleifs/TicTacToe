@@ -14,14 +14,20 @@ public class GameFrame extends JFrame {
     private BorderPanel border = new BorderPanel();
     private Board board = new Board();
     private Container pane;
+    private JLabel titleLabel;
+    private JLabel label;
 
     private void initializeFrame() {
         pane = this.getContentPane();
         pane.setLayout(new BorderLayout());
-        JLabel label = new JLabel("Tic tac toe!", JLabel.CENTER);
+        JLabel titleLabel = new JLabel("Tic tac toe!", JLabel.CENTER);
+        titleLabel.setFont(new Font("Courier", Font.BOLD, 36));
+        titleLabel.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
+        pane.add(titleLabel, BorderLayout.NORTH);
+        label = new JLabel("", JLabel.CENTER);
         label.setFont(new Font("Courier", Font.BOLD, 36));
         label.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
-        pane.add(label, BorderLayout.NORTH);
+        pane.add(label, BorderLayout.SOUTH);
     }
 
     private void drawSeed(BoardIndex idx, Seed mark) {
@@ -39,6 +45,7 @@ public class GameFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 // Initialize board
                 board = new Board();
+                changeLabel("");
                 repaint();
             }
         });
@@ -58,20 +65,11 @@ public class GameFrame extends JFrame {
                     }
                     // Check if game is finished
                     if (board.hasWon(Seed.CROSS)) {
-                        JLabel label = new JLabel("X won!", JLabel.CENTER);
-                        label.setFont(new Font("Courier", Font.BOLD, 36));
-                        label.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
-                        panel.add(label, BorderLayout.SOUTH); 
+                        changeLabel("Cross won!");
                     } else if (board.hasWon(Seed.CIRCLE)) {
-                        JLabel label = new JLabel("Circle won!", JLabel.CENTER);
-                        label.setFont(new Font("Courier", Font.BOLD, 36));
-                        label.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
-                        pane.add(label, BorderLayout.SOUTH); 
+                        changeLabel("Circle won!");
                     } else if (board.isDraw()) {
-                        JLabel label = new JLabel("Draw :(", JLabel.CENTER);
-                        label.setFont(new Font("Courier", Font.BOLD, 36));
-                        label.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
-                        pane.add(label, BorderLayout.SOUTH);
+                        changeLabel("Draw :(");
                     }
                     repaint();
                 }
@@ -83,7 +81,11 @@ public class GameFrame extends JFrame {
         this.setTitle(TITLE);
         this.setVisible(true);
         this.pack();
-    } 
+    }
+
+    private void changeLabel(String status) {
+        label.setText(status);
+    }
 
     // Panel which holds the entire game screen
     public class GamePanel extends JPanel {
