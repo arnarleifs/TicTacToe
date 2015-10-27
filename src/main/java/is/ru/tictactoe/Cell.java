@@ -1,7 +1,6 @@
 package is.ru.tictactoe;
 
 public class Cell {
-
     private int row;
     private int col;
     private Seed mark;
@@ -32,4 +31,3 @@ public class Cell {
         return this.mark;
     }
 }
-
