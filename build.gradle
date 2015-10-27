@@ -9,7 +9,16 @@
 
 // Apply the java plugin to add support for Java
 apply plugin: 'java'
+apply plugin: 'application'
 apply plugin: 'checkstyle'
+
+mainClassName = "is.ru.tictactoe.GameFrame"
+
+jar {
+    manifest {
+	attributes 'Main-Class': 'is.ru.tictactoe.GameFrame'
+    }
+}
 
 // In this section you declare where to find the dependencies of your project
 repositories {

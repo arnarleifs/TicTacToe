@@ -21,4 +21,3 @@ public class celljunit {
         System.out.println("testMarkForCell passed!");
     }
 }
-
