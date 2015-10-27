@@ -8,7 +8,6 @@ import javax.swing.border.*;
 
 @SuppressWarnings("serial")
 public class GameFrame extends JFrame {
-    // Constants for determining the size of the frame and components
     private final String TITLE = "Tic 'n toe!";
     private GamePanel panel = new GamePanel();
     private BorderPanel border = new BorderPanel();
