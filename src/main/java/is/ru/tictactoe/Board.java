@@ -49,8 +49,8 @@ public class Board {
     }
 
     public boolean hasWon(Seed candidate) {
-        boolean won = hasWonOnRowLevel(candidate) || hasWonOnColumnLevel(candidate) || hasWonOnDiagonal(candidate)
-               || hasWonOnOppositeDiagonal(candidate);
+        boolean won = hasWonOnRowLevel(candidate) || hasWonOnColumnLevel(candidate)
+                      || hasWonOnDiagonal(candidate) || hasWonOnOppositeDiagonal(candidate);
         if(won) {
             if (candidate == Seed.CROSS) {
                 gameStatus = Status.CROSS_WON;

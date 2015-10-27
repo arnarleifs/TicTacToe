@@ -74,7 +74,8 @@ public class GameFrame extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 // Check if clicked in a valid cell
-                if (BoardIndex.checkIndex(e.getX(), e.getY()) && board.getGameStatus() == Status.ONGOING) {
+                if (BoardIndex.checkIndex(e.getX(), e.getY()) 
+                    && board.getGameStatus() == Status.ONGOING) {
                     BoardIndex idx = new BoardIndex(e.getX(), e.getY());
                     Seed turn = board.whichTurn();
                     makePlay(turn, idx);
