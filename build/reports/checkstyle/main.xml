@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="5.9">
+<file name="/home/code_test/TicTacToe/src/main/java/is/ru/tictactoe/Board.java">
+</file>
+<file name="/home/code_test/TicTacToe/src/main/java/is/ru/tictactoe/BoardIndex.java">
+</file>
+<file name="/home/code_test/TicTacToe/src/main/java/is/ru/tictactoe/Cell.java">
+</file>
+<file name="/home/code_test/TicTacToe/src/main/java/is/ru/tictactoe/GameFrame.java">
+</file>
+<file name="/home/code_test/TicTacToe/src/main/java/is/ru/tictactoe/Seed.java">
+</file>
+<file name="/home/code_test/TicTacToe/src/main/java/is/ru/tictactoe/Status.java">
+</file>
+</checkstyle>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="5.9">
+<file name="/home/code_test/TicTacToe/src/test/java/is/ru/tictactoe/BoardIndexJUnit.java">
+</file>
+<file name="/home/code_test/TicTacToe/src/test/java/is/ru/tictactoe/boardjunit.java">
+</file>
+<file name="/home/code_test/TicTacToe/src/test/java/is/ru/tictactoe/celljunit.java">
+</file>
+</checkstyle>

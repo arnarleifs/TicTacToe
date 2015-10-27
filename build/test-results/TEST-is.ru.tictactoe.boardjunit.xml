@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="is.ru.tictactoe.boardjunit" tests="10" skipped="0" failures="0" errors="0" timestamp="2015-10-27T20:38:58" hostname="i-7f3b5dd9.csd07cloud.internal" time="0.015">
+  <properties/>
+  <testcase name="testHasWonInOppositeDiagonal" classname="is.ru.tictactoe.boardjunit" time="0.003"/>
+  <testcase name="testHasWonInFirstRow" classname="is.ru.tictactoe.boardjunit" time="0.0"/>
+  <testcase name="testHasWonInDiagonal" classname="is.ru.tictactoe.boardjunit" time="0.0"/>
+  <testcase name="testInitializeBoard" classname="is.ru.tictactoe.boardjunit" time="0.0"/>
+  <testcase name="testHasWonInFirstColumn" classname="is.ru.tictactoe.boardjunit" time="0.0"/>
+  <testcase name="testHasWonInThirdRow" classname="is.ru.tictactoe.boardjunit" time="0.0"/>
+  <testcase name="testHasWonInThirdColumn" classname="is.ru.tictactoe.boardjunit" time="0.001"/>
+  <testcase name="testHasWonInSecondRow" classname="is.ru.tictactoe.boardjunit" time="0.0"/>
+  <testcase name="testIsDraw" classname="is.ru.tictactoe.boardjunit" time="0.002"/>
+  <testcase name="testHasWonInSecondColumn" classname="is.ru.tictactoe.boardjunit" time="0.001"/>
+  <system-out><![CDATA[testInitializeBoard passed!
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

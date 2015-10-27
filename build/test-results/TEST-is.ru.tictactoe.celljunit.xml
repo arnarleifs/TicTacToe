@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="is.ru.tictactoe.celljunit" tests="2" skipped="0" failures="0" errors="0" timestamp="2015-10-27T20:38:58" hostname="i-7f3b5dd9.csd07cloud.internal" time="0.003">
+  <properties/>
+  <testcase name="testSetEmptyForCell" classname="is.ru.tictactoe.celljunit" time="0.002"/>
+  <testcase name="testMarkForCell" classname="is.ru.tictactoe.celljunit" time="0.0"/>
+  <system-out><![CDATA[testSetEmptyForCell passed!
+testMarkForCell passed!
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
