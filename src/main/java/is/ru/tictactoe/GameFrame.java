@@ -165,8 +165,4 @@ public class GameFrame extends JFrame {
             return new Dimension(300, 300);
         }
     }
-
-    public static void main(String[] args) {
-        GameFrame game = new GameFrame();
-    }
 }
