@@ -6,3 +6,4 @@ public class GameApplet extends Applet {
         GameFrame frame = new GameFrame();
     }
 }
+
