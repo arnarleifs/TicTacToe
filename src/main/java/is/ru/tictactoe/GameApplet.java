@@ -2,8 +2,7 @@ package is.ru.tictactoe;
 import java.applet.*;
 
 public class GameApplet extends Applet {
-    public static void main(String[] args) {
+    public void init() {
         GameFrame frame = new GameFrame();
     }
 }
-
