@@ -36,4 +36,24 @@ public class DatabaseConnectionJUnit {
 		}
 		assertEquals("X_WON", winner);
 	}
+
+	@Test
+	public void testInsertToDatabase() {
+		String resultString = "";
+		String query = "SELECT TOP 1 * FROM tictactoe.Scores ORDER BY ID DESC";
+		try {
+			Connection connection = conn.getConnection();
+			DBConnection.insertResultsToDb(Seed.CROSS, connection);
+			Statement statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery(query);
+			while(rs.next()) {
+				resultString = rs.getString("winner");
+			}
+			// Clean up afterwards
+			statement.executeUpdate("DELETE FROM tictactoe.Scores WHERE ID=(SELECT MAX(ID) FROM tictactoe.Scores)");
+		} catch (Exception ex) {
+			assertEquals("NOT1337", resultString);
+		}
+		assertEquals("X_WON", resultString);
+	}
 }
