@@ -43,7 +43,7 @@ public class DatabaseConnectionJUnit {
         String query = "SELECT TOP 1 * FROM tictactoe.Scores ORDER BY ID DESC";
         try {
             Connection connection = conn.getConnection();
-            DBConnection.insertResultsToDb(Seed.CROSS, connection);
+            DBConnection.insertResultsToDb(Seed.CIRCLE);
             Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery(query);
             while (rs.next()) {
@@ -55,6 +55,6 @@ public class DatabaseConnectionJUnit {
         } catch (Exception ex) {
             assertEquals("NOT1337", resultString);
         }
-        assertEquals("X_WON", resultString);
+        assertEquals("CIRCLE_WON", resultString);
     }
 }

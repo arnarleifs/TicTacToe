@@ -26,7 +26,7 @@ repositories {
     // You can declare any Maven/Ivy/file repository here.
     jcenter()
     flatDir {
-	dirs 'libs'
+	dir "libs/"
     }
 }
 
@@ -47,4 +47,13 @@ dependencies {
 
 task stage {
     dependsOn installDist
+}
+
+task fatJar(type: Jar) {
+    manifest {
+	attributes 'Main-Class': 'is.ru.tictactoe.GameApplet'
+    }
+    baseName = project.name + '-all'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
 }

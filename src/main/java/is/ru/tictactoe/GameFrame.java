@@ -16,7 +16,6 @@ public class GameFrame extends JFrame {
     private Container pane;
     private JLabel titleLabel;
     private JLabel label;
-    private Connection dbConnection;
 
     private void initializeFrame() {
         pane = this.getContentPane();
@@ -56,13 +55,13 @@ public class GameFrame extends JFrame {
     private void checkGameStatus() {
         if (board.hasWon(Seed.CROSS)) {
             changeLabel("Cross won!");
-            DBConnection.insertResultsToDb(Seed.CROSS, dbConnection);
+            DBConnection.insertResultsToDb(Seed.CROSS);
         } else if (board.hasWon(Seed.CIRCLE)) {
             changeLabel("Circle won!");
-            DBConnection.insertResultsToDb(Seed.CIRCLE, dbConnection);
+            DBConnection.insertResultsToDb(Seed.CIRCLE);
         } else if (board.isDraw()) {
             changeLabel("Draw :(");
-            DBConnection.insertResultsToDb(Seed.EMPTY, dbConnection);
+            DBConnection.insertResultsToDb(Seed.EMPTY);
         }
     }
 
@@ -84,9 +83,9 @@ public class GameFrame extends JFrame {
                     BoardIndex idx = new BoardIndex(e.getX(), e.getY());
                     Seed turn = board.whichTurn();
                     makePlay(turn, idx);
+                    repaint();
                     // Check if game is finished
                     checkGameStatus();
-                    repaint();
                 }
             }
         });
@@ -103,12 +102,6 @@ public class GameFrame extends JFrame {
         this.setTitle(TITLE);
         this.setVisible(true);
         this.pack();
-         try {
-            DBConnection conn = new DBConnection();
-            dbConnection = conn.getConnection();
-        } catch (Exception ex) {
-
-        }
     }
 
     private void changeLabel(String status) {
