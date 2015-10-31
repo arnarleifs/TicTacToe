@@ -94,7 +94,7 @@ public class GameFrame extends JFrame {
         receiveMouseInputFromUser();
         panel.add(border, BorderLayout.CENTER);
         this.add(panel);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setTitle(TITLE);
         this.setVisible(true);
         this.pack();
@@ -164,9 +164,5 @@ public class GameFrame extends JFrame {
         public Dimension getPreferredSize() {
             return new Dimension(300, 300);
         }
-    }
-
-    public static void main(String[] args) {
-        GameFrame game = new GameFrame();
     }
 }
