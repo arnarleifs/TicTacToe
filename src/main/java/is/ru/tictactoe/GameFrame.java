@@ -5,6 +5,7 @@ import java.awt.image.*;
 import java.awt.geom.*;
 import javax.swing.*;
 import javax.swing.border.*;
+import java.sql.*;
 
 @SuppressWarnings("serial")
 public class GameFrame extends JFrame {
@@ -15,6 +16,7 @@ public class GameFrame extends JFrame {
     private Container pane;
     private JLabel titleLabel;
     private JLabel label;
+    private Connection dbConnection;
 
     private void initializeFrame() {
         pane = this.getContentPane();
@@ -54,10 +56,13 @@ public class GameFrame extends JFrame {
     private void checkGameStatus() {
         if (board.hasWon(Seed.CROSS)) {
             changeLabel("Cross won!");
+            DBConnection.insertResultsToDb(Seed.CROSS, dbConnection);
         } else if (board.hasWon(Seed.CIRCLE)) {
             changeLabel("Circle won!");
+            DBConnection.insertResultsToDb(Seed.CIRCLE, dbConnection);
         } else if (board.isDraw()) {
             changeLabel("Draw :(");
+            DBConnection.insertResultsToDb(Seed.EMPTY, dbConnection);
         }
     }
 
@@ -98,6 +103,12 @@ public class GameFrame extends JFrame {
         this.setTitle(TITLE);
         this.setVisible(true);
         this.pack();
+         try {
+            DBConnection conn = new DBConnection();
+            dbConnection = conn.getConnection();
+        } catch (Exception ex) {
+
+        }
     }
 
     private void changeLabel(String status) {

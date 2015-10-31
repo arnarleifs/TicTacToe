@@ -42,4 +42,17 @@ public class DBConnection {
 			System.out.println(ex.getMessage());
 		}
 	}
+
+	public static void insertResultsToDb(Seed player, Connection dbConnection) {
+        String winner = "";
+        if (player == Seed.CROSS) { winner = "X_WON"; }
+        else if (player == Seed.CIRCLE) { winner = "CIRCLE_WON"; }
+        else { winner = "DRAW"; }
+        try {
+            Statement statement = dbConnection.createStatement();
+            statement.executeUpdate("INSERT INTO tictactoe.Scores (winner, date_of_win) VALUES('" + winner + "', GETDATE())");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
 }
