@@ -5,6 +5,9 @@ import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 import java.util.HashMap;
 
+/**
+ * Creates a web server using the Spark framework 
+ */
 public class MainWeb {
     private static String layout = "templates/layout.vtl";
     public static void main(String[] args) {
