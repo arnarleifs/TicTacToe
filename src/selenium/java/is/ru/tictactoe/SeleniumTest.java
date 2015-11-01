@@ -16,7 +16,7 @@ public class SeleniumTest {
     "http://" + USERNAME + ":" + ACCESS_KEY + "@ondemand.saucelabs.com:80/wd/hub";
     public static WebDriver driver;
 
-    @BeforeMethod
+    @BeforeClass
     public void setupDriver() throws Exception {
         DesiredCapabilities caps = DesiredCapabilities.chrome();
         caps.setCapability(CapabilityType.PLATFORM, "Windows 8.1");
@@ -30,7 +30,7 @@ public class SeleniumTest {
         assertEquals("Tic tac toe", title);
     }
 
-    @AfterMethod
+    @AfterClass
     public void terminateDriver() {
         driver.quit();
     }
