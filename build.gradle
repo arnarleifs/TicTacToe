@@ -31,9 +31,12 @@ repositories {
 dependencies {
     // The production code uses the SLF4J logging API at compile time
     compile 'org.slf4j:slf4j-api:1.7.12'
-
+    compile 'org.seleniumhq.selenium:selenium-java:2.21.0'
     compile 'com.sparkjava:spark-core:2.3'
     compile 'com.sparkjava:spark-template-velocity:2.3'
+    compile 'org.testng:testng:6.9.9'
+    compile 'com.saucelabs:sauce_junit:2.1.18'
+    compile 'com.saucelabs:sauce_testng:2.1.18'
     compile group: 'org.apache.velocity', name: 'velocity', version: '1.7'
     // Declare the dependency for your favourite test framework you want to use in your tests.
     // TestNG is also supported by the Gradle Test task. Just change the
