@@ -71,7 +71,7 @@ task seleniumXvfb(type: Test, dependsOn: installDist) {
     environment "DISPLAY", ":99"
 
     doFirst {
-        'bin/xvfb start'.execute()
+        'sudo bin/xvfb start'.execute()
         'build/install/TicTacToe/bin/TicTacToe &'.execute()
     }
 

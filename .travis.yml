@@ -12,7 +12,7 @@ addons:
 
 script:
   - ./gradlew check
-  - ./gradlew seleniumXvfb --info
+  - ./gradlew seleniumXvfb
 
 deploy:
   provider: heroku
