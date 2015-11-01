@@ -27,6 +27,7 @@ public class SeleniumTest {
     @Test
     public void testTitle() {
         String title = driver.getTitle();
+        System.out.println(title);
         assertEquals("SUP", title);
     }
 
