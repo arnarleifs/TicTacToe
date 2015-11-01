@@ -16,16 +16,22 @@ public class SeleniumTest {
     "http://" + USERNAME + ":" + ACCESS_KEY + "@ondemand.saucelabs.com:80/wd/hub";
     public static WebDriver driver;
 
-    public static void main(String[] args) throws Exception {
+    @BeforeMethod
+    public void setupDriver() throws Exception {
         DesiredCapabilities caps = DesiredCapabilities.chrome();
         caps.setCapability(CapabilityType.PLATFORM, "Windows 8.1");
         driver = new RemoteWebDriver(new URL(URL), caps);
         driver.get("https://warm-sierra-2216.herokuapp.com/");
+    }
 
-        // Perform the test
+    @Test
+    public void testTitle() {
         String title = driver.getTitle();
         assertEquals("Tic tac toe", title);
+    }
 
+    @AfterMethod
+    public void terminateDriver() {
         driver.quit();
     }
 }
