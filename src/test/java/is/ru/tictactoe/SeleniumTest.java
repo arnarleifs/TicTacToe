@@ -12,7 +12,8 @@ import java.net.URL;
 public class SeleniumTest {
     public static final String USERNAME = "arnarleifs";
     public static final String ACCESS_KEY = "6cbcb439-dfa0-4cb5-9f7f-7f5ff1c4ac3c";
-    public static final String URL = "http://" + USERNAME + ":" + ACCESS_KEY + "@ondemand.saucelabs.com:80/wd/hub";
+    public static final String URL = 
+    "http://" + USERNAME + ":" + ACCESS_KEY + "@ondemand.saucelabs.com:80/wd/hub";
     public static WebDriver driver;
 
     @BeforeMethod
