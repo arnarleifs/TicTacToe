@@ -5,6 +5,10 @@ jdk:
     - oraclejdk7
       - openjdk6
 
+addons:
+  sauce_connect:
+    username: "arnarleifs"
+    access_key: "6cbcb439-dfa0-4cb5-9f7f-7f5ff1c4ac3c"
 
 deploy:
   provider: heroku
