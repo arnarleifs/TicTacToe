@@ -18,7 +18,7 @@ public class SeleniumTest {
 
     @BeforeClass
     public void setupDriver() throws Exception {
-        DesiredCapabilities caps = DesiredCapabilities.chrome();
+        DesiredCapabilities caps = DesiredCapabilities.firefox();
         caps.setCapability(CapabilityType.PLATFORM, "Windows 8.1");
         driver = new RemoteWebDriver(new URL(URL), caps);
         driver.get("https://warm-sierra-2216.herokuapp.com/");
@@ -27,7 +27,7 @@ public class SeleniumTest {
     @Test
     public void testTitle() {
         String title = driver.getTitle();
-        assertEquals("Tic tac toe", title);
+        assertEquals("SUP", title);
     }
 
     @AfterClass
