@@ -15,7 +15,7 @@ notifications:
   email:
     recipients: 
       - bjoggib@gmail.com
-
+      - drleifz@gmail.com
     on_success: always
     on_failure: always
     
