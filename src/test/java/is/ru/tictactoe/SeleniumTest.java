@@ -24,7 +24,7 @@ public class SeleniumTest {
 
         // Perform the test
         String title = driver.getTitle();
-        assertEquals("Tic tac toe", title);
+        assertEquals("SHII", title);
 
         driver.quit();
     }
