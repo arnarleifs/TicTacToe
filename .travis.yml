@@ -11,4 +11,12 @@ deploy:
   api-key:
     secure: "a8f14d51-efc4-417f-8b62-57e5ec74ad33"
   app: warm-sierra-2216
+notifications:
+  email:
+    recipients: 
+      - bjoggib@gmail.com
+
+    on_success: always
+    on_failure: always
+    
 
