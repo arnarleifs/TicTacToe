@@ -5,6 +5,19 @@ jdk:
     - oraclejdk7
       - openjdk6
 
+addons:
+  sauce_connect:
+    username: "arnarleifs"
+    access_key: "6cbcb439-dfa0-4cb5-9f7f-7f5ff1c4ac3c"
+
+before_script:
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+  - sleep 3
+  - xvfb-run -a java -cp "src/test/java/is/ru/tictactoe/" is.ru.tictactoe.SeleniumTest
+
+before_install:
+  - "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16"
 
 deploy:
   provider: heroku
