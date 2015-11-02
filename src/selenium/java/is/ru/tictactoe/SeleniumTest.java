@@ -32,7 +32,7 @@ public class SeleniumTest {
     }
 
     @Test
-    public void testTitle() {
+    public void testHeading() {
         driver.get(herokuUrl);
         String jumbotron = driver.findElement(By.cssSelector(".jumbotron")).getText();
         assertEquals("Tic tac toe!", jumbotron);
@@ -42,7 +42,14 @@ public class SeleniumTest {
     public void testParagraph() {
         driver.get(herokuUrl);
         String paragraph = driver.findElement(By.cssSelector(".text-center p")).getText();
-        assertEquals("Tic tac toe is a game that is nice to play once in a while, if you don't know this... Play this!", paragraph);
+        assertEquals("Tic tac toe is a game that is nice to " +
+        "play once in a while, if you don't know this... Play this!", paragraph);
+    }
+
+    @Test
+    public void testTitle() {
+        String title = driver.getTitle();
+        assertEquals("Tic tac toe", title);
     }
 
     @AfterClass
