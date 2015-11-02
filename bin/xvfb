@@ -7,7 +7,7 @@ fi
 
 case "$1" in
 start)
-  /usr/bin/Xvfb -ac -screen 0 1280x1600x24 -noreset &
+  /usr/bin/Xvfb :10 -ac &
 ;;
 stop)
   killall Xvfb
