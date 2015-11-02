@@ -49,7 +49,7 @@ public class SeleniumTest {
     @Test
     public void testTitle() {
         String title = driver.getTitle();
-        assertEquals("SUP", title);
+        assertEquals("Tic tac toe", title);
     }
 
     @AfterClass
