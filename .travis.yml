@@ -5,11 +5,6 @@ jdk:
     - oraclejdk7
       - openjdk6
 
-addons:
-  sauce_connect:
-    username: "arnarleifs"
-    access_key: "6cbcb439-dfa0-4cb5-9f7f-7f5ff1c4ac3c"
-
 before_script:
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
@@ -21,7 +16,7 @@ before_install:
 script:
   - python bin/send_latest_jar.py
   - ./gradlew check
-  - ./gradlew seleniumXvfb --info
+  - ./gradlew seleniumXvfb
 
 deploy:
   provider: heroku
@@ -29,3 +24,7 @@ deploy:
     secure: "a8f14d51-efc4-417f-8b62-57e5ec74ad33"
   app: warm-sierra-2216
 
+after_deploy:
+  - git checkout master
+  - git pull origin master
+  - git merge develop
