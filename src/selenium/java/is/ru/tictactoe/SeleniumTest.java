@@ -35,7 +35,7 @@ public class SeleniumTest {
     public void testTitle() {
         driver.get(herokuUrl);
         String jumbotron = driver.findElement(By.cssSelector(".jumbotron")).getText();
-        assertEquals("SUP", jumbotron);
+        assertEquals("Tic tac toe!", jumbotron);
     }
 
     @AfterClass

@@ -51,12 +51,12 @@ dependencies {
     testCompile 'junit:junit:4.12'
 
     seleniumCompile 'junit:junit:4.12'
-    seleniumCompile 'org.seleniumhq.selenium:selenium-java:2.30.0'
-    seleniumCompile 'org.testng:testng:6.9.9'
+    seleniumCompile 'org.seleniumhq.selenium:selenium-firefox-driver:2.43.1'
+    seleniumCompile 'org.seleniumhq.selenium:selenium-java:2.48.2'
 
-    seleniumXvfbCompile 'junit:junit:4.11'
+    seleniumXvfbCompile 'junit:junit:4.12'
+    seleniumXvfbCompile 'org.seleniumhq.selenium:selenium-firefox-driver:2.43.1'
     seleniumXvfbCompile 'org.seleniumhq.selenium:selenium-java:2.48.2'
-    seleniumXvfbCompile 'org.testng:testng:6.9.9'
 }
 
 task selenium(type: Test, dependsOn: installDist) {
