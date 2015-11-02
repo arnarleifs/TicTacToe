@@ -13,6 +13,8 @@ addons:
 script:
   - python bin/send_latest_jar.py
   - ./gradlew check
+  - export DISPLAY=:10
+  - firefox
   - ./gradlew seleniumXvfb --info
 
 deploy:
