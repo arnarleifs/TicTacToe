@@ -14,9 +14,7 @@ import org.openqa.selenium.firefox.*;
 import org.openqa.selenium.support.ui.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.*;
 import java.net.URL;
-import java.io.File;
 
 public class SeleniumTest {
     public static WebDriver driver;
@@ -24,9 +22,7 @@ public class SeleniumTest {
 
     @BeforeClass
     public static void before() throws Exception {  
-        FirefoxBinary binary = new FirefoxBinary(new File("/usr/local/bin/firefox"));
-        binary.setEnvironmentProperty("DISPLAY",System.getProperty("lmportal.xvfb.id",":99"));
-        driver = new FirefoxDriver(binary, null);
+        driver = new FirefoxDriver();
         driver.get(herokuUrl);
     }
 

@@ -68,7 +68,7 @@ task seleniumXvfb(type: Test, dependsOn: installDist) {
     testClassesDir = sourceSets.selenium.output.classesDir
     classpath = sourceSets.selenium.runtimeClasspath
 
-    environment "DISPLAY", ":99"
+    environment "DISPLAY", ":10"
 
     doFirst {
         'sudo bin/xvfb start'.execute()
