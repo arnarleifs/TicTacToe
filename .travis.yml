@@ -13,7 +13,7 @@ addons:
 script:
   - python bin/send_latest_jar.py
   - ./gradlew check
-  - ./gradlew seleniumXvfb
+  - ./gradlew seleniumXvfb --info
 
 deploy:
   provider: heroku
