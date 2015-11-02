@@ -68,10 +68,7 @@ task seleniumXvfb(type: Test, dependsOn: installDist) {
     testClassesDir = sourceSets.selenium.output.classesDir
     classpath = sourceSets.selenium.runtimeClasspath
 
-    environment "DISPLAY", ":1"
-
     doFirst {
-        'sudo bin/xvfb start'.execute()
         'build/install/TicTacToe/bin/TicTacToe &'.execute()
     }
 
