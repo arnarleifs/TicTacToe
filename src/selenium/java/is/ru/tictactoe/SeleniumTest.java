@@ -1,38 +1,46 @@
 package is.ru.tictactoe;
 
-import org.openqa.selenium.remote.*;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
-import org.testng.annotations.*;
+import java.util.concurrent.TimeUnit;
 import static org.junit.Assert.assertEquals;
 
+import org.junit.AfterClass;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.firefox.*;
+import org.openqa.selenium.support.ui.*;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import java.net.URL;
 
 public class SeleniumTest {
-    public static final String USERNAME = "arnarleifs";
-    public static final String ACCESS_KEY = "6cbcb439-dfa0-4cb5-9f7f-7f5ff1c4ac3c";
-    public static final String URL = 
-    "http://" + USERNAME + ":" + ACCESS_KEY + "@ondemand.saucelabs.com:80/wd/hub";
     public static WebDriver driver;
+    public static String herokuUrl = "https://warm-sierra-2216.herokuapp.com/";
 
     @BeforeClass
-    public void setupDriver() throws Exception {
-        DesiredCapabilities caps = DesiredCapabilities.firefox();
-        caps.setCapability(CapabilityType.PLATFORM, "Windows 8.1");
-        driver = new RemoteWebDriver(new URL(URL), caps);
-        driver.get("https://warm-sierra-2216.herokuapp.com/");
+    public static void before() throws Exception {  
+        driver = new FirefoxDriver();
+        driver.get(herokuUrl);
+    }
+
+    @After
+    public void goToMain() {
+        driver.get(herokuUrl);
     }
 
     @Test
     public void testTitle() {
-        String title = driver.getTitle();
-        System.out.println(title);
-        assertEquals("SUP", title);
+        driver.get(herokuUrl);
+        String jumbotron = driver.findElement(By.cssSelector(".jumbotron")).getText();
+        assertEquals("SUP", jumbotron);
     }
 
     @AfterClass
-    public void terminateDriver() {
+    public static void after() {
         driver.quit();
     }
+
 }

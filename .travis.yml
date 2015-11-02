@@ -11,6 +11,7 @@ addons:
     access_key: "6cbcb439-dfa0-4cb5-9f7f-7f5ff1c4ac3c"
 
 script:
+  - python bin/send_latest_jar.py
   - ./gradlew check
   - ./gradlew seleniumXvfb
 
