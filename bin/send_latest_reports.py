@@ -57,5 +57,41 @@ for root, dirs, files in os.walk('build/docs/javadoc'):
 		ftp.storbinary('STOR ' + correctPath, open(full_fname, 'rb'))
 print("Java docs deployment completed")
 
+# Upload development manual via FTP to server
+print("Starting to deploy development manual to docs.ekbjarnason.com")
+ftp.cwd('../develop')
+for root, dirs, files in os.walk('docs/dev'):
+	for fname in files:
+		full_fname = os.path.join(root, fname)
+		full_fname = full_fname.replace("\\", "/")
+		correctPath = full_fname.split("dev")[1]
+		correctPath = correctPath[1:]
+		ftp.storbinary('STOR ' + correctPath, open(full_fname, 'rb'))
+print("Development manual deployment completed")
+
+# Upload Administration manual via FTP to server
+print("Starting to deploy administration manual to docs.ekbjarnason.com")
+ftp.cwd('../admin')
+for root, dirs, files in os.walk('docs/admin'):
+	for fname in files:
+		full_fname = os.path.join(root, fname)
+		full_fname = full_fname.replace("\\", "/")
+		correctPath = full_fname.split("admin")[1]
+		correctPath = correctPath[1:]
+		ftp.storbinary('STOR ' + correctPath, open(full_fname, 'rb'))
+print("Administration manual deployment completed")
+
+# Upload design report via FTP to server
+print("Starting to deploy design report to docs.ekbjarnason.com")
+ftp.cwd('../design')
+for root, dirs, files in os.walk('docs/design'):
+	for fname in files:
+		full_fname = os.path.join(root, fname)
+		full_fname = full_fname.replace("\\", "/")
+		correctPath = full_fname.split("design")[1]
+		correctPath = correctPath[1:]
+		ftp.storbinary('STOR ' + correctPath, open(full_fname, 'rb'))
+print("Design report deployment completed")
+
 # Close the FTP stream
 ftp.quit()

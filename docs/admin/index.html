@@ -1,0 +1,73 @@
+<h1 id="tictactoe-administration-manual">TicTacToe Administration manual</h1>
+<h3 id="requirements">Requirements</h3>
+<ul>
+<li>Java JDK (openjdk-7-jdk recommended)</li>
+<li>Git</li>
+<li>For linux: <code>apt-get-install git</code></li>
+<li>For windows: download and install <a href="http://git-scm.com/download/win">git bash</a></li>
+<li>Heroku Toolbelt(for deploying on heroku)</li>
+<li>Linux: <code>wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh</code></li>
+<li>Windows: <a href="https://toolbelt.heroku.com/windows">Click here</a></li>
+<li>OSX: <a href="https://toolbelt.heroku.com/osx">Click here</a></li>
+</ul>
+<h3 id="setting-up">Setting up</h3>
+<ul>
+<li>Clone the project <code>git clone</code> this repository</li>
+<li>For deplaying on heroku do <code>heroku login</code> and follow instructions</li>
+</ul>
+<h3 id="deploying-on-heroku">Deploying on Heroku</h3>
+<ol style="list-style-type: decimal">
+<li>When in root directory of the project: `heroku create <NameYourProject></li>
+<li>Prepare for pushing on heroku</li>
+<li>Create a file, system.properties in your apps base folder:</li>
+</ol>
+<ul>
+<li><code>echo &quot;java.runtime.version=1.8&quot; &gt; system.properties</code></li>
+</ul>
+<ol start="4" style="list-style-type: decimal">
+<li>Create a file, Procfile in your apps base folder:</li>
+</ol>
+<ul>
+<li><code>echo &quot;web: build/install/TicTacToe/bin/TicTacToe&quot; &gt; Procfile</code></li>
+</ul>
+<ol start="5" style="list-style-type: decimal">
+<li>Add the task stage to your build.gradle file to make sure that installApp is run before trying to launch the app using the Procfile definition (see above):</li>
+</ol>
+<ul>
+<li><code>echo &quot;task stage { dependsOn installDist }&quot; &gt;&gt; build.gradle</code></li>
+</ul>
+<h4 id="push-on-heroku">Push on Heroku</h4>
+<ol style="list-style-type: decimal">
+<li>Run <code>git status</code> and add the files to creaded like this:</li>
+</ol>
+<ul>
+<li><code>git status</code></li>
+<li><code>git add Procfile system.properties build.gradle</code></li>
+<li><code>git commit -m &quot;added gradle files&quot;</code></li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>push to heroku:</li>
+</ol>
+<ul>
+<li><code>git push heroku master</code></li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li>Now check if everything worked properly on: <a href="warm-sierra-2216.herokuapp.com" class="uri">warm-sierra-2216.herokuapp.com</a></li>
+</ol>
+<h3 id="running-the-app">Running the app</h3>
+<ol style="list-style-type: decimal">
+<li>Run <code>./gradlew build</code> when in projects root directory</li>
+<li>navigate to build/install/TicTactoe/bin</li>
+<li>Run your game</li>
+</ol>
+<ul>
+<li>Windows: open TicTacToe.bat</li>
+<li>Linux: run <code>java TicTacToe</code></li>
+</ul>
+<ol start="4" style="list-style-type: decimal">
+<li>The game is running on <a href="localhost:4567" class="uri">localhost:4567</a></li>
+</ol>
+<ul>
+<li>To run on different port:</li>
+<li>Run: <code>export PORT=1337</code></li>
+</ul>
