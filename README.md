@@ -11,10 +11,3 @@ Björgvin Birkir Björgvinsson (bjorgvin14@ru.is)
 Jónas Hróar Jónsson (jonasj14@ru.is)
 Laufey Lind Sturludóttir (laufeys14@ru.is)
 
-### Prerequisites 
-*Gradle
-
-###Build and Run
-####Gradle
-Lýsing
-
