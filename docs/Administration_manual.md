@@ -17,30 +17,35 @@
 ### Deploying on Heroku
 1. When in root directory of the project: `heroku create <NameYourProject>
 2. Prepare for pushing on heroku
-1. Create a file, system.properties in your apps base folder:
+3. Create a file, system.properties in your apps base folder:
 * `echo "java.runtime.version=1.8" > system.properties`
-2. Create a file, Procfile in your apps base folder:
+4. Create a file, Procfile in your apps base folder:
 * `echo "web: build/install/TicTacToe/bin/TicTacToe" > Procfile`
-3. Add the task stage to your build.gradle file to make sure that installApp is run before 
-   trying to launch the app using the Procfile definition (see above):
+5. Add the task stage to your build.gradle file to make sure that installApp is run before trying to launch the app using the Procfile definition (see above):
    * `echo "task stage { dependsOn installDist }" >> build.gradle`
-   #### Push on Heroku
-   1. Run `git status` and add the files to creaded like this:
-   * `git status`
-   * `git add Procfile system.properties build.gradle`
-   * `git commit -m "added gradle files"`
-   2. push to heroku:
-   * `git push heroku master`
-   3. Now check if everything worked properly on: [warm-sierra-2216.herokuapp.com](warm-sierra-2216.herokuapp.com)
 
-   ### Running the app
-   1. Run `./gradlew build` when in projects root directory
-   2. navigate to build/install/TicTactoe/bin
-   3. Run your game
-   * Windows: open TicTacToe.bat
-   * Linux: run `java TicTacToe`
-   4. The game is running on [localhost:4567](localhost:4567)
-   * To run on different port:
-   * Run: `export PORT=1337`
+#### Push on Heroku
+1. Run `git status` and add the files to creaded like this:
+* `git status`
+* `git add Procfile system.properties build.gradle`
+* `git commit -m "added gradle files"`
+2. push to heroku:
+* `git push heroku master`
+3. Now check if everything worked properly on: [warm-sierra-2216.herokuapp.com](warm-sierra-2216.herokuapp.com)
 
+### Running the app
+1. Run `./gradlew build` when in projects root directory
+2. navigate to build/install/TicTactoe/bin
+3. Run your game
+* Windows: open TicTacToe.bat
+* Linux: run `java TicTacToe`
+4. The game is running on [localhost:4567](localhost:4567)
+* To run on different port:
+* Run: `export PORT=1337`
+5. Because the .jar is unsigned it is mandatory to open the Java Control Panel, go to the Security tab and add the following paths to the Exception list: 
+* 'http://checkthelunch.ekbjarnason.com' 
+* 'http://localhost:4567' (for debugging locally) 
+* 'http://tictactoe-dj-scrum.herokuapp.com' (production) 
+* 'http://warm-sierra-2216.herokuapp.com' (staging) 
+6. Enjoy the game!
 
