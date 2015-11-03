@@ -1,0 +1,3 @@
+#!/bin/bash
+
+jarsigner -keystore build/libs/MyKeystore build/libs/TicTacToe.jar tictactoe < build/libs/pwd
