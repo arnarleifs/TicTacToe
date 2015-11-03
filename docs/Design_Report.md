@@ -9,11 +9,10 @@ The frame is in Html and is rendered with velocityTemplateEngine, and the applet
 ## Coding conventions
 
 1. Java
-* Brackets: public void func() {
-
-            // code here
+* Brackets: 
+*           public void func() {
+                // code here
             }
-            
 2. Pascal
 * Classes
 3. Lower Camel Case
