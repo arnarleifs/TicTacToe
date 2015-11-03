@@ -17,7 +17,7 @@ public class celljunit {
     public void testMarkForCell() {
         cell.setMark(Seed.CIRCLE);
         boolean returnValue = cell.checkMark(Seed.CIRCLE);
-        assertEquals(false, returnValue);
+        assertEquals(true, returnValue);
         System.out.println("testMarkForCell passed!");
     }
 }
