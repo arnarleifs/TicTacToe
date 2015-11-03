@@ -25,7 +25,6 @@ notifications:
     on_success: always
     on_failure: always
 
-
 deploy:
   provider: heroku
   api-key:
