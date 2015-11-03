@@ -5,6 +5,8 @@ import os
 os.system("./gradlew test")
 # Compile latest code coverage report
 os.system("./gradlew jacocoTestReport")
+# Compile latest java docs
+os.system("./gradlew javadoc")
 
 # Upload unit tests via FTP to server
 print("Starting to deploy latest unit test report to docs.ekbjarnason.com")
@@ -25,7 +27,6 @@ ftp.cwd('../jacoco')
 for root, dirs, files in os.walk('build/reports/jacoco/test/html'):
 	for fname in files:
 		full_fname = os.path.join(root, fname)
-		print(full_fname)
 		correctPath = full_fname.split("html", 1)[1][1:]
 		ftp.storbinary('STOR ' + correctPath, open(full_fname, 'rb'))
 print("Code coverage test report deployment completed")
@@ -43,6 +44,18 @@ for root, dirs, files in os.walk('build/reports/tests'):
 		correctPath = correctPath[1:].replace("\\", "/")
 		ftp.storbinary('STOR ' + correctPath, open(full_fname, 'rb'))
 print("Selenium test report deployment completed")
+
+# Upload java docs via FTP to server
+print("Starting to deploy latest java docs to docs.ekbjarnason.com")
+ftp.cwd('../javadoc')
+for root, dirs, files in os.walk('build/docs/javadoc'):
+	for fname in files:
+		full_fname = os.path.join(root, fname)
+		full_fname = full_fname.replace("\\", "/")
+		correctPath = full_fname.split("javadoc")[1]
+		correctPath = correctPath[1:]
+		ftp.storbinary('STOR ' + correctPath, open(full_fname, 'rb'))
+print("Java docs deployment completed")
 
 # Close the FTP stream
 ftp.quit()
