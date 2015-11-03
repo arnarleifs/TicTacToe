@@ -2,9 +2,9 @@ import ftplib
 import os
 
 # Compile the latest unit tests
-os.system("gradle test")
+os.system("./gradlew test")
 # Compile latest code coverage report
-os.system("gradle jacocoTestReport")
+os.system("./gradlew jacocoTestReport")
 
 # Upload unit tests via FTP to server
 print("Starting to deploy latest unit test report to docs.ekbjarnason.com")
@@ -31,7 +31,7 @@ for root, dirs, files in os.walk('build/reports/jacoco/test/html'):
 print("Code coverage test report deployment completed")
 
 # Compile latest Selenium tests
-os.system("gradle selenium")
+os.system("./gradlew selenium")
 
 # Upload selenium test report via FTP to server
 print("Starting to deploy latest selenium test report to docs.ekbjarnason.com")
