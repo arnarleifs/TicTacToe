@@ -20,9 +20,6 @@ script:
   - python bin/send_latest_jar.py
   - python bin/md_to_html.py
 
-install:
-  - pip install pypandoc
-
 notifications:
   email:
     recipients:
