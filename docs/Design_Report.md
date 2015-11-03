@@ -8,17 +8,21 @@ The frame is in Html and is rendered with velocityTemplateEngine, and the applet
 
 ## Coding conventions
 
-1. Java
-* Brackets: 
-*           public void func() {
+The following rules are checked by the stylecheck plugin. Code does not pass inspection if they are broken.
 
-                // code here
-            }
-2. Pascal
-* Classes
-3. Lower Camel Case
-* Variables
-* Functions
+1. There should be no tab characters in the code, indents should be four spaces.
+2. All classes should end with an empty line.
+3. There should be no redundant imports.
+4. Lines should not exceed 100 characters.
+5. Scope blocks should be opened in the same line as the scope is declared.
+6. All if and else blocks shall have braces around them.
+7. Operators and tokens such as "if", "else" and "for" should be surrounded by whitespace for readability.
+8. Semicolons and typecasts shall be followed by whitespace.
+
+## Naming conventions
+
+1. Pascal casing is used for classes.
+2. Camel casing is used for variables and methods.
 
 ## Class diagram
 
