@@ -4,7 +4,7 @@ import os
 # Compile the latest .jar
 os.system("./gradlew jar")
 # Sign the latest .jar
-os.system("sudo ./bin/sign_jar")
+os.system("./bin/sign_jar")
 
 # Upload file via FTP to server
 print("Starting to deploy latest .jar to FTP server")
