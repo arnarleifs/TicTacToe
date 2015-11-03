@@ -11,6 +11,7 @@ before_script:
   - sleep 3 # give xvfb some time to start
 
 before_install:
+  - chmod +x gradlew
   - "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16"
 
 script:
@@ -35,3 +36,9 @@ deploy:
 
 after_deploy:
   - python bin/send_latest_reports.py
+
+# whitelist 
+branches:
+  only:
+    - develop
+    - master
