@@ -17,11 +17,11 @@
 ### Deploying on Heroku
 1. When in root directory of the project: `heroku create <NameYourProject>
 2. Prepare for pushing on heroku
-1. Create a file, system.properties in your apps base folder:
+3. Create a file, system.properties in your apps base folder:
 * `echo "java.runtime.version=1.8" > system.properties`
-2. Create a file, Procfile in your apps base folder:
+4. Create a file, Procfile in your apps base folder:
 * `echo "web: build/install/TicTacToe/bin/TicTacToe" > Procfile`
-3. Add the task stage to your build.gradle file to make sure that installApp is run before 
+5. Add the task stage to your build.gradle file to make sure that installApp is run before 
    trying to launch the app using the Procfile definition (see above):
    * `echo "task stage { dependsOn installDist }" >> build.gradle`
    #### Push on Heroku
