@@ -18,6 +18,7 @@ script:
   - ./gradlew check
   - ./gradlew seleniumXvfb
   - python bin/send_latest_jar.py
+  - python bin/md_to_html.py
 
 notifications:
   email:
