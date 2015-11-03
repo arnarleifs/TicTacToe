@@ -18,6 +18,12 @@ script:
   - ./gradlew check
   - ./gradlew seleniumXvfb
   - python bin/send_latest_jar.py
+  - python bin/md_to_html.py
+
+install:
+  - apt-get install pandoc
+  - yum install pandoc
+  - pip install pypandoc
 
 notifications:
   email:
