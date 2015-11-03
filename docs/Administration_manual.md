@@ -42,5 +42,10 @@
 4. The game is running on [localhost:4567](localhost:4567)
 * To run on different port:
 * Run: `export PORT=1337`
-
+5. Because the .jar is unsigned it is mandatory to open the Java Control Panel, go to the Security tab and add the following paths to the Exception list: 
+* 'http://checkthelunch.ekbjarnason.com' 
+* 'http://localhost:4567' (for debugging locally) 
+* 'http://tictactoe-dj-scrum.herokuapp.com' (production) 
+* 'http://warm-sierra-2216.herokuapp.com' (staging) 
+6. Enjoy the game!
 
