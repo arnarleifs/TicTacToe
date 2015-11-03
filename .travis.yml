@@ -14,7 +14,13 @@ before_install:
   - chmod +x gradlew
   - "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16"
 
+install:
+  - "[ ! -d ~/bin ] && mkdir ~/bin || true"
+  - "wget -q -O - https://github.com/yihui/crandalf/raw/master/inst/scripts/install-pandoc | bash"
+  - pip install --user pypandoc
+
 script:
+  - python bin/md_to_html.py
   - ./gradlew check
   - ./gradlew seleniumXvfb
   - python bin/send_latest_jar.py
