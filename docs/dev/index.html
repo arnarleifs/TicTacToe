@@ -35,10 +35,41 @@
 <li><p>Junit</p></li>
 <li><p>Spark</p></li>
 </ul>
-<p>## Testing ### Unit tests 1. To run test script: <code>./gradlew test</code></p>
-<p>### End to end tests - Selenium #### Requirements 1. Running on Linux OS make sure you have Firefox 40.0 * Get <a href="https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/40.0/">Firefox 28.0</a>. 2. Running on Heroku where you do not have a GUI: * <code>sudo apt-get install -y xvfb</code> * <code>sudo apt-get install -y xfonts-100dpi xfonts-75dpi xfonts-scalable xfonts-cyrillic</code> * <code>sudo apt-get install -y firefox=28.0+build2-0ubuntu2</code> 3. Running on Windows: * Java JDK 7 in your Path (Example <code>C:\Program Files\Java\openjdk-7.0.71\bin</code>) * Firefox 28.0 needs to be accesible from the Command Line * Change lines in <code>build.gradle</code> that run the server in the <code>selenium.doFirst</code> task to use a valid Windows Path, something like <code>C:\\path-to-project\\build\\install\\TicTacToe\\bin\\TicaTacToe.bat</code></p>
-<pre><code>          ## Running selenium test:
-          1. Locally just do `./gradlew selenium`
-          2. Headless mode on servers:
-              * `export DISPLAY=:99`
-              * `./gradlew seleniumXvfb`</code></pre>
+<h2 id="testing">Testing</h2>
+<h3 id="unit-tests">Unit tests</h3>
+<ol style="list-style-type: decimal">
+<li>To run test script: <code>./gradlew test</code></li>
+</ol>
+<h3 id="end-to-end-tests---selenium">End to end tests - Selenium</h3>
+<h4 id="requirements">Requirements</h4>
+<ol style="list-style-type: decimal">
+<li>Running on Linux OS make sure you have Firefox 40.0</li>
+</ol>
+<ul>
+<li>Get <a href="https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/40.0/">Firefox 28.0</a>.</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>Running on Heroku where you do not have a GUI:</li>
+</ol>
+<ul>
+<li><code>sudo apt-get install -y xvfb</code></li>
+<li><code>sudo apt-get install -y xfonts-100dpi xfonts-75dpi xfonts-scalable xfonts-cyrillic</code></li>
+<li><code>sudo apt-get install -y firefox=28.0+build2-0ubuntu2</code></li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li>Running on Windows:</li>
+</ol>
+<ul>
+<li>Java JDK 7 in your Path (Example <code>C:\Program Files\Java\openjdk-7.0.71\bin</code>)</li>
+<li>Firefox 28.0 needs to be accesible from the Command Line</li>
+<li>Change lines in <code>build.gradle</code> that run the server in the <code>selenium.doFirst</code> task to use a valid Windows Path, something like <code>C:\\path-to-project\\build\\install\\TicTacToe\\bin\\TicaTacToe.bat</code></li>
+</ul>
+<h2 id="running-selenium-test">Running selenium test:</h2>
+<ol style="list-style-type: decimal">
+<li>Locally just do <code>./gradlew selenium</code></li>
+<li>Headless mode on servers:</li>
+</ol>
+<ul>
+<li><code>export DISPLAY=:99</code></li>
+<li><code>./gradlew seleniumXvfb</code></li>
+</ul>
