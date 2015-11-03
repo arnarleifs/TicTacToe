@@ -1,0 +1,44 @@
+<h1 id="developers-manual">Developers manual</h1>
+<p>Describes what is needed and how to get the project to build on a fresh machine</p>
+<h2 id="source-control-client-and-access-to-source-control">Source control client and access to source control</h2>
+<p>GitHub is a Web-based Git repository hosting service. It can host an open source software projects and therefore access is open to all.</p>
+<h4 id="how-to-fork-the-project-in-github">How to fork the project in GitHub:</h4>
+<p>Instructions:</p>
+<p>Start by forking the repository <a href="https://github.com/arnarleifs/TicTacToe">TicTacToe</a>.</p>
+<p>Run the following command in shell (in the directory where you want to clone the project):</p>
+<ol style="list-style-type: decimal">
+<li><code>git clone</code> * paste here the url/path of your forked repository*`</li>
+<li><code>./gradlew run</code> when in projects root folder</li>
+<li>Try the game locally on <a href="http://localhost:4567">localhost:4567</a>.</li>
+</ol>
+<h4 id="you-can-run-the-game-on-a-different-port">You can run the game on a different port:</h4>
+<pre class="sh"><code>export PORT=1337
+./gradlew run</code></pre>
+<h2 id="build-environment">Build environment</h2>
+<p>You need to download and setup the following software:</p>
+<ol style="list-style-type: decimal">
+<li><a href="https://help.github.com/articles/set-up-git/">Git</a></li>
+</ol>
+<ul>
+<li>For linux: <code>apt-get-install git</code></li>
+<li>For windows: download and install <a href="http://git-scm.com/download/win">git bash</a></li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li><a href="http://docs.oracle.com/javase/7/docs/webnotes/install/">Java JDK</a></li>
+</ol>
+<h2 id="other-necessary-dependencies">Other necessary dependencies</h2>
+<ul>
+<li><p><a href="https://travis-ci.org/">Travis</a></p></li>
+<li><p><a href="https://signup.heroku.com/identity">Heroku</a></p></li>
+<li><p><a href="http://www.seleniumhq.org/download/">Selenium IDE</a> for Mozilla Firefox.</p></li>
+<li><p>Velocity template engine</p></li>
+<li><p>Junit</p></li>
+<li><p>Spark</p></li>
+</ul>
+<p>## Testing ### Unit tests 1. To run test script: <code>./gradlew test</code></p>
+<p>### End to end tests - Selenium #### Requirements 1. Running on Linux OS make sure you have Firefox 40.0 * Get <a href="https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/40.0/">Firefox 28.0</a>. 2. Running on Heroku where you do not have a GUI: * <code>sudo apt-get install -y xvfb</code> * <code>sudo apt-get install -y xfonts-100dpi xfonts-75dpi xfonts-scalable xfonts-cyrillic</code> * <code>sudo apt-get install -y firefox=28.0+build2-0ubuntu2</code> 3. Running on Windows: * Java JDK 7 in your Path (Example <code>C:\Program Files\Java\openjdk-7.0.71\bin</code>) * Firefox 28.0 needs to be accesible from the Command Line * Change lines in <code>build.gradle</code> that run the server in the <code>selenium.doFirst</code> task to use a valid Windows Path, something like <code>C:\\path-to-project\\build\\install\\TicTacToe\\bin\\TicaTacToe.bat</code></p>
+<pre><code>          ## Running selenium test:
+          1. Locally just do `./gradlew selenium`
+          2. Headless mode on servers:
+              * `export DISPLAY=:99`
+              * `./gradlew seleniumXvfb`</code></pre>

@@ -17,7 +17,7 @@ DM_PATH = os.path.realpath(os.path.join(os.path.
 folders = {"admin" : AM_PATH, "dev" : DM_PATH, 
             "design" : DR_PATH}
 
-for key, value in folders.iteritems():
+for key, value in folders.items():
     newFolder = os.path.join(os.path.join(DOCPATH, key))
     if not os.path.exists(newFolder):
         os.makedirs(newFolder)
