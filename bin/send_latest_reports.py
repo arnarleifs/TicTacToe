@@ -25,6 +25,7 @@ ftp.cwd('../jacoco')
 for root, dirs, files in os.walk('build/reports/jacoco/test/html'):
 	for fname in files:
 		full_fname = os.path.join(root, fname)
+		print(full_fname)
 		correctPath = full_fname.split("\\", 1)[1]
 		correctPath = correctPath.replace("\\", "/")
 		ftp.storbinary('STOR ' + correctPath, open(full_fname, 'rb'))
