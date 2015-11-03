@@ -1,10 +1,10 @@
-l
+# Developers manual
 
 Describes what is needed and how to get the project to build on a fresh machine
 
 ## Source control client and access to source control
 
-GitHub is is a Web-based Git repository hosting service. It can host an open source software projects and therefore access is open to all.
+GitHub is a Web-based Git repository hosting service. It can host an open source software projects and therefore access is open to all.
 
 #### How to fork the project in GitHub:
 Instructions:
@@ -54,8 +54,8 @@ You need to download and setup the following software:
 
  ### End to end tests - Selenium
  #### Requirements
- 1. Running on Linux OS make sure you have Firefox 28.0
- * Get [Firefox 28.0](https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/28.0/).
+ 1. Running on Linux OS make sure you have Firefox 40.0
+ * Get [Firefox 28.0](https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/40.0/).
  2. Running on Heroku where you do not have a GUI:
      * `sudo apt-get install -y xvfb`
          * `sudo apt-get install -y xfonts-100dpi xfonts-75dpi xfonts-scalable xfonts-cyrillic`
