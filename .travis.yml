@@ -28,3 +28,4 @@ after_deploy:
   - git checkout master
   - git pull origin master
   - git merge develop
+  - python bin/send_latest_reports.py
