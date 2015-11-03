@@ -2,6 +2,7 @@
 
 import pypandoc
 import os
+import shutil
 
 DOCPATH = os.path.realpath(os.path.join(os.path.
             dirname(__file__), "../docs"))
@@ -21,5 +22,6 @@ for key, value in folders.iteritems():
     if not os.path.exists(newFolder):
         os.makedirs(newFolder)
     pypandoc.convert(value, 'html', format='markdown', outputfile=os.path.join(newFolder, 'index.html'))
-#print 'value is %s' % value
-#print 'newfolder is %s' % newFolder
+if os.path.exists(os.path.join(DOCPATH, "classdiagram.jpg")):
+    shutil.copy2(os.path.join(DOCPATH, "classdiagram.jpg"), 
+            os.path.join(DOCPATH, "design", "classdiagram.jpg"))

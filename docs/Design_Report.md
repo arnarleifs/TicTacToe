@@ -11,6 +11,7 @@ The frame is in Html and is rendered with velocityTemplateEngine, and the applet
 1. Java
 * Brackets: 
 *           public void func() {
+
                 // code here
             }
 2. Pascal
