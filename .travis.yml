@@ -36,8 +36,8 @@ deploy:
 after_deploy:
   - python bin/send_latest_reports.py
 
-# blacklist 
+# whitelist 
 branches:
-  except:
+  only:
     - develop
     - master
