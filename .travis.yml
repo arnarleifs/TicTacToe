@@ -14,18 +14,17 @@ before_install:
   - "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16"
 
 script:
-  - python bin/send_latest_jar.py
   - ./gradlew check
   - ./gradlew seleniumXvfb
+  - python bin/send_latest_jar.py
 
 deploy:
   provider: heroku
   api-key:
     secure: "a8f14d51-efc4-417f-8b62-57e5ec74ad33"
-  app: warm-sierra-2216
+  app: 
+    develop: warm-sierra-2216
+    master: tictactoe-dj-scrum
 
 after_deploy:
-  - git checkout master
-  - git pull origin master
-  - git merge develop
   - python bin/send_latest_reports.py
