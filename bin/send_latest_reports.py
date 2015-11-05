@@ -11,7 +11,7 @@ os.system("./gradlew javadoc")
 # Upload unit tests via FTP to server
 print("Starting to deploy latest unit test report to docs.ekbjarnason.com")
 ftp = ftplib.FTP('cptropaeolum.arvixe.com')
-ftp.login('tictactoe', 'ticTacTo3')
+ftp.login('ttt', 'ticTacTo3')
 ftp.cwd('docs.ekbjarnason.com/wwwroot/junit')
 for root, dirs, files in os.walk('build/reports/tests'):
 	for fname in files:
