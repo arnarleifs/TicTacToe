@@ -10,7 +10,7 @@ os.system("python bin/sign_jar.py")
 print("Starting to deploy latest .jar to FTP server")
 filename = "build/libs/TicTacToe.jar"
 ftp = ftplib.FTP('cptropaeolum.arvixe.com')
-ftp.login('tictactoe', 'ticTacTo3')
+ftp.login('ttt', 'ticTacTo3')
 ftp.cwd('checkthelunch.ekbjarnason.com/wwwroot/data')
 myfile = open(filename, 'rb')
 ftp.storbinary('STOR TicTacToe.jar', myfile)

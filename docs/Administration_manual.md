@@ -1,5 +1,7 @@
 # TicTacToe Administration manual
 
+## Authors: Arnar Leifsson, Baldur Tryggvason, Bjorgvin Birkir Bjorgvinsson, Jonas Hroar Jonsson and Laufey Lind Sturludottir
+
 ### Requirements
 * Java JDK (openjdk-7-jdk recommended)
 * Git
