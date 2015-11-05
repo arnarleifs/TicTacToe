@@ -4,7 +4,7 @@ import os
 os.system("python bin/md_to_html.py")
 
 ftp = ftplib.FTP('cptropaeolum.arvixe.com')
-ftp.login('tictactoe', 'ticTacTo3')
+ftp.login('ttt', 'ticTacTo3')
 ftp.cwd('docs.ekbjarnason.com/wwwroot/develop')
 
 # Upload development manual via FTP to server

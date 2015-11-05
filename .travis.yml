@@ -23,7 +23,6 @@ script:
   - python bin/md_to_html.py
   - ./gradlew check
   - ./gradlew seleniumXvfb
-  - python bin/send_latest_jar.py
 
 notifications:
   email:
@@ -43,6 +42,7 @@ deploy:
 after_deploy:
   - python bin/send_latest_reports.py
   - python bin/update_manuals.py
+  - python bin/send_latest_jar.py
 
 # whitelist 
 branches:
